@@ -81,5 +81,6 @@ Exemplo:
 ---
 
 ✨ Obrigada por visitar meu portfólio!  
-Este repositório é um reflexo da minha paixão por **tecnologia, desenvolvimento e segurança digital**.
+Este repositório é um reflexo da minha paixão por **tecnologia, desenvolvimento e segurança digital**.     
+
 Feito com 💖 por Lorac-2.
