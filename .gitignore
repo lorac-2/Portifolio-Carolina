@@ -1,1 +1,39 @@
+# --- Arquivos grandes e instaladores ---
 *.exe
+*.msi
+*.iso
+*.zip
+*.tar
+*.rar
+
+# --- Logs e temporários ---
+*.log
+*.tmp
+*.bak
+
+# --- Arquivos de sistema ---
+.DS_Store
+Thumbs.db
+
+# --- Ambientes virtuais Python ---
+venv/
+.env/
+__pycache__/
+*.pyc
+
+# --- Dependências Node.js ---
+node_modules/
+
+# --- Docker ---
+*.pid
+*.seed
+*.pid.lock
+
+# --- IDEs e editores ---
+.vscode/
+.idea/
+
+# --- Testes e resultados temporários ---
+coverage/
+*.coverage
+*.pytest_cache/
