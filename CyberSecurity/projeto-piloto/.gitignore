@@ -1,0 +1,6 @@
+_pycache__/
+*.pyc
+*.log
+*.txt
+relatorio_monitoramento.txt
+.vscode/

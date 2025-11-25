@@ -1,0 +1,5 @@
+{
+  "portas_monitoradas": [80, 443, 22, 21],
+  "ips_confiados": ["192.168.1.1", "10.0.0.1", "127.0.0.1"],
+  "relatorio_output": "relatorio_monitoramento.txt"
+}
