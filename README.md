@@ -1,7 +1,7 @@
 # Portfólio Profissional - Desenvolvimento & CyberSecurity
 
 Bem-vindo ao meu portfólio! 🚀  
-Este repositório reúne projetos que refletem minha jornada e evolução nas áreas de **Desenvolvimento de Software** e **Segurança da Informação (CyberSecurity)**.  
+Este repositório reúne projetos que refletem minha jornada e evolução nas áreas de **Desenvolvimento de Software** e **Segurança Cibernética (CyberSecurity)**.  
 O objetivo é apresentar minhas habilidades técnicas, práticas e criativas em diferentes contextos, servindo como vitrine profissional para recrutadores e empresas.
 
 ---
